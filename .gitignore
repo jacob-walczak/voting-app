@@ -1,0 +1,27 @@
+# ===== Build =====
+target/
+*.log
+
+# ===== IntelliJ / IDE =====
+.idea/
+*.iml
+out/
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+
+# ===== Env / secrets =====
+.env
+.env.*
+!.env.example
+
+# ===== Docker =====
+postgres_data/
+
+# ===== Dumps / local artifacts =====
+dumps/
+dump/
+screens/
+screenshots/
+*dump*

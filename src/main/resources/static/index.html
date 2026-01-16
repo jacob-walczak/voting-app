@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Voting Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 4px 6px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🗳️ Voting Application</h1>
+
+<p>
+    Aplikacja REST API uruchomiona poprawnie.
+</p>
+
+<h2>Dostępne endpointy (przykłady)</h2>
+<ul>
+    <li><code>POST /api/voters</code></li>
+    <li><code>POST /api/elections</code></li>
+    <li><code>POST /api/elections/{id}/options</code></li>
+    <li><code>POST /api/votes</code></li>
+</ul>
+
+<h2>Small Test API</h2>
+
+<button onclick="createVoter()">POST /api/voters</button>
+<button onclick="createElection()">POST /api/elections</button>
+
+<pre id="output"></pre>
+
+<h2>Dokumentacja</h2>
+<p>
+    Szczegóły API i decyzji projektowych znajdują się w pliku <code>README.md</code>.
+</p>
+
+<p>
+    <strong>Uwaga:</strong> Aplikacja nie posiada interfejsu użytkownika –
+    zgodnie z zakresem zadania rekrutacyjnego.
+</p>
+
+</body>
+
+<script>
+    const output = document.getElementById("output");
+
+    function log(data) {
+        output.textContent = JSON.stringify(data, null, 2);
+    }
+
+    function createVoter() {
+        fetch("/api/voters", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                name: "Test User",
+                active: true
+            })
+        })
+            .then(r => r.json())
+            .then(log)
+            .catch(err => log(err));
+    }
+
+    function createElection() {
+        fetch("/api/elections", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                name: "Test Election"
+            })
+        })
+            .then(r => r.json())
+            .then(log)
+            .catch(err => log(err));
+    }
+</script>
+</html>

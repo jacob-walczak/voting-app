@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: voting-application
+
+  profiles:
+    active: postgres
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
